@@ -1,4 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
 {% for game in Games %}
-<p>Game Name: {{ game.game_name</p>
+<p>Game Name: {{ game.game_name }}</p>
+<p>Genre: {{ game.genre }}</p>
+<p>Release date: {{ game.release_date }}</p>
+<p>Price on release: {{ game.price }}</p>
+<p>Publisher: {{ games.game.publisher_name }}</p>
+{% endfor %}
+{% enblock body %}

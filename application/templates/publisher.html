@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+{% for publisher in Publishers %}
+<p>Publisher Name: {{ publisher.publisher_name }}</p>
+
+{% endfor %}
+{% enblock body %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+<head> 
+    <title> Add Game</title>
+</head>
+{% block body %}
+<div class="form">
+    <form method="POST", action="">
+        {{ form.hidden_tag() }}
+        {{ form.game_name.label }} {{ form.game_name }}
+        <br>
+        {{ form.genre.label }} {{ form.genre }}
+        <br>
+        {{ form.release_date.label }} {{ form.release_date }}
+        <br>
+        {{ form.price.label }} {{ form.price }}
+        <br>
+        {{ form.publisher.label }} {{ form.publisher }}
+        <br>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock body %} 
