@@ -7,8 +7,9 @@ class Games(db.Model):
     release_date = db.Column(db.Integer)
     price = db.Column(db.Decimal)
     publisher_ID = db.Column(db.Integer, db.ForeignKey(Publishers.id), nullable = False)
-    publisher = db.relationship('Publishers', backref = 'publisher')
+
 
 class Publishers(db.model):
     id = db.column(db.Integer,primary_key = True)
     publisher_name = db.column(db.String)
+    gublisher = db.relationship('Games', backref = 'game')
