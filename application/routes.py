@@ -14,8 +14,8 @@ def indexgames():
 def about():
     return render_template('about.html')
 
-@app.route('/indexpublisher')
-def indexpublisher():
+@app.route('/indexpublishers')
+def indexpublishers():
     publisher = Publishers.query.all()
     return render_template("publisher.html", Publishers = publisher)
 
@@ -48,18 +48,18 @@ def addpublisher():
             )
             db.session.add(publisherData)
             db.session.commit()
-            return redirect(url_for('indexpublisher'))
+            return redirect(url_for('indexpublishers'))
     return render_template('addpublisher.html', form=form)
 
 @app.route('/deletegame/<int:id>')
-def delete(id):
+def deletegame(id):
     game = Games.query.get(id)
     db.session.delete(game)
     db.session.commit()
     return redirect(url_for('indexgames'))
 
 @app.route('/deletepublisher/<int:id>')
-def publisher(id):
+def deletepublisher(id):
     publisher = Publishers.query.get(id)
     db.session.delete(publisher)
     db.session.commit()

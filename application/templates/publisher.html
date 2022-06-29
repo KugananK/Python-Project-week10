@@ -2,6 +2,8 @@
 {% block body %}
 {% for publisher in Publishers %}
 <p>Publisher Name: {{ publisher.publisher_name }}</p>
-
+<form action="{{ url_for('deletepublisher', id=publisher.id) }}">
+    <button type="Submit">Delete Publisher</button>
+</form>
 {% endfor %}
 {% endblock body %}

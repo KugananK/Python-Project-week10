@@ -6,5 +6,8 @@
 <p>Release date: {{ game.release_date }}</p>
 <p>Price on release: {{ game.price }}</p>
 <p>Publisher: {{ game.game.publisher_name }}</p>
+<form action="{{ url_for('deletegame', id=game.id) }}">
+    <button type="Submit">Delete Game</button>
+</form>
 {% endfor %}
 {% endblock body %}
