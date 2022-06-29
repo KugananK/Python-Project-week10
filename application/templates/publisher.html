@@ -5,5 +5,8 @@
 <form action="{{ url_for('deletepublisher', id=publisher.id) }}">
     <button type="Submit">Delete Publisher</button>
 </form>
+<form action="{{ url_for('updatepublisher', id=publisher.id) }}">
+    <button type="Submit">Update Publisher</button>
+</form>
 {% endfor %}
 {% endblock body %}

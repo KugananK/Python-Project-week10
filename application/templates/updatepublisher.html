@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+<head> 
+    <title>Update Publisher</title>
+</head>
+{% block body %}
+<div class="form">
+    <form method="POST", action="">
+        {{ form.hidden_tag() }}
+        {{ form.publisher_name.label }} {{ form.publisher_name }}
+        <br>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock body %} 

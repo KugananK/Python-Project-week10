@@ -31,7 +31,6 @@ def addgame():
                 release_date = form.release_date.data,
                 price = form.price.data,
                 publisher_ID = form.publisher.data
-
             )
             db.session.add(gameData)
             db.session.commit()
@@ -64,3 +63,38 @@ def deletepublisher(id):
     db.session.delete(publisher)
     db.session.commit()
     return redirect(url_for('indexpublishers'))
+
+@app.route('/updategame/<int:id>', methods= ['GET', 'POST'])
+def updategame(id):
+    form = GameForm()
+    form.publisher.choices = [(publishers.id,publishers.publisher_name) for publishers in Publishers.query.all()]
+    game = Games.query.get(id)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            game.game_name = form.game_name.data
+            game.genre = form.genre.data
+            game.release_date = form.release_date.data
+            game.price = form.price.data
+            game.publisher_ID = form.publisher.data
+            db.session.commit()
+            return redirect(url_for('indexgames'))
+        elif request.method == 'GET':
+            game.game_name = form.game_name.data
+            game.genre = form.genre.data
+            game.release_date = form.release_date.data
+            game.price = form.price.data
+            game.publisher = form.publisher.data
+    return render_template('updategame.html', form=form)
+
+@app.route('/updatepublisher/<int:id>', methods= ['GET', 'POST'])
+def updatepublisher(id):
+    form = PublisherForm()
+    publisher = Publishers.query.get(id)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            publisher.publisher_name = form.publisher_name.data
+            db.session.commit()
+            return redirect(url_for('indexpublishers'))
+        elif request.method == 'GET':
+            form.publisher_name.data = publisher.publisher_name
+    return render_template('updatepublisher.html', form=form)
