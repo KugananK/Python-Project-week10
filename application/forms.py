@@ -6,7 +6,7 @@ class GameForm(FlaskForm):
     genre = StringField("Genre")
     release_date = IntegerField("Release Date")
     price = DecimalField("Price on release")
-    publisher = SelectField("Publisher", pubList = [])
+    publisher = SelectField("Publisher", choices=[])
     submit = SubmitField("Add Game")
     
 

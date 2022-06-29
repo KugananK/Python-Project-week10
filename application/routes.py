@@ -14,28 +14,28 @@ def indexgames():
 def about():
     return render_template('about.html')
 
-@approute('/indexpublisher')
-def indexpublisher:
+@app.route('/indexpublisher')
+def indexpublisher():
     publisher = Publishers.query.all()
     return render_template("publisher.html", Publishers = publisher)
 
 @app.route('/addgame', methods=['GET','POST'])
 def addgame():
     form = GameForm()
-    form.publisher.pubList = [(publishers.id,publishers.publisher_name) for publishers in Publishers.query.all()]
+    form.publisher.choices = [(publishers.id,publishers.publisher_name) for publishers in Publishers.query.all()]
     if request.method == 'POST':
         if form.validate_on_submit():
             gameData = Games(
                 game_name = form.game_name.data,
-                genre = form.genre.data
-                release_date = form.release_date.data
-                price = form.price.data
+                genre = form.genre.data,
+                release_date = form.release_date.data,
+                price = form.price.data,
                 publisher_ID = form.publisher.data
 
             )
             db.session.add(gameData)
             db.session.commit()
-        return redirect(url_for('home'))
+            return redirect(url_for('indexgames'))
     return render_template('addgame.html', form=form)
 
 @app.route('/addpublisher', methods=['GET', 'POST'])
@@ -43,11 +43,24 @@ def addpublisher():
     form = PublisherForm()
     if request.method == 'POST':
         if form.validate_on_submit():
-            publisherData = Publisher(
+            publisherData = Publishers(
                 publisher_name = form.publisher_name.data
             )
             db.session.add(publisherData)
             db.session.commit()
-        return redirect(url_for('indexpublisher'))
+            return redirect(url_for('indexpublisher'))
     return render_template('addpublisher.html', form=form)
 
+@app.route('/deletegame/<int:id>')
+def delete(id):
+    game = Games.query.get(id)
+    db.session.delete(game)
+    db.session.commit()
+    return redirect(url_for('indexgames'))
+
+@app.route('/deletepublisher/<int:id>')
+def publisher(id):
+    publisher = Publishers.query.get(id)
+    db.session.delete(publisher)
+    db.session.commit()
+    return redirect(url_for('indexpublishers'))
