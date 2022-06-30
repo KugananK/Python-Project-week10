@@ -10,10 +10,6 @@ def indexgames():
     game = Games.query.all()
     return render_template("game.html", Games = game)
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 @app.route('/indexpublishers')
 def indexpublishers():
     publisher = Publishers.query.all()
