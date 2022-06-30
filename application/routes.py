@@ -20,17 +20,16 @@ def addgame():
     form = GameForm()
     form.publisher.choices = [(publishers.id,publishers.publisher_name) for publishers in Publishers.query.all()]
     if request.method == 'POST':
-        if form.validate_on_submit():
-            gameData = Games(
-                game_name = form.game_name.data,
-                genre = form.genre.data,
-                release_date = form.release_date.data,
-                price = form.price.data,
-                publisher_ID = form.publisher.data
-            )
-            db.session.add(gameData)
-            db.session.commit()
-            return redirect(url_for('indexgames'))
+        gameData = Games(
+            game_name = form.game_name.data,
+            genre = form.genre.data,
+            release_date = form.release_date.data,
+            price = form.price.data,
+            publisher_ID = form.publisher.data
+        )
+        db.session.add(gameData)
+        db.session.commit()
+        return redirect(url_for('indexgames'))
     return render_template('addgame.html', form=form)
 
 @app.route('/addpublisher', methods=['GET', 'POST'])
@@ -66,20 +65,19 @@ def updategame(id):
     form.publisher.choices = [(publishers.id,publishers.publisher_name) for publishers in Publishers.query.all()]
     game = Games.query.get(id)
     if request.method == 'POST':
-        if form.validate_on_submit():
-            game.game_name = form.game_name.data
-            game.genre = form.genre.data
-            game.release_date = form.release_date.data
-            game.price = form.price.data
-            game.publisher_ID = form.publisher.data
-            db.session.commit()
-            return redirect(url_for('indexgames'))
-        elif request.method == 'GET':
-            game.game_name = form.game_name.data
-            game.genre = form.genre.data
-            game.release_date = form.release_date.data
-            game.price = form.price.data
-            game.publisher = form.publisher.data
+        game.game_name = form.game_name.data
+        game.genre = form.genre.data
+        game.release_date = form.release_date.data
+        game.price = form.price.data
+        game.publisher_ID = form.publisher.data
+        db.session.commit()
+        return redirect(url_for('indexgames'))
+    elif request.method == 'GET':
+        game.game_name = form.game_name.data
+        game.genre = form.genre.data
+        game.release_date = form.release_date.data
+        game.price = form.price.data
+        game.publisher = form.publisher.data
     return render_template('updategame.html', form=form)
 
 @app.route('/updatepublisher/<int:id>', methods= ['GET', 'POST'])

@@ -6,7 +6,6 @@ from flask import redirect, url_for, render_template, request
 
 class TestBase(TestCase):
     def create_app(self):
-
         app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///testdata.db",
                 SECRET_KEY='TEST_SECRET_KEY',
                 DEBUG=True,
@@ -47,3 +46,21 @@ class TestViews(TestBase):
         response = self.client.get(url_for('indexpublishers'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'SampleTestPublisher', response.data)
+
+class TestCreate(TestBase):
+    def test_create_game(self):
+        response = self.client.post(
+            url_for('addgame'),
+            data = dict(game_name = "SampleTestGame2",
+            genre = "RPG",
+            release_date = 2017,
+            price = 9.99,
+            publisher_ID = 1
+            )
+        )
+        assert Games.query.filter_by(game_name="SampleTestGame2").first().id == 2
+
+    def test_addgame_get(self):
+        response = self.client.get(url_for('addgame'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Game Name', response.data)     
