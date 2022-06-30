@@ -3,7 +3,7 @@ from application import db
 class Publishers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     publisher_name = db.Column(db.String)
-    gublisher = db.relationship('Games', backref = 'game')
+    publisher = db.relationship('Games', backref = 'game')
 
 class Games(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,4 +11,4 @@ class Games(db.Model):
     genre = db.Column(db.String(30))
     release_date = db.Column(db.Integer)
     price = db.Column(db.Float)
-    publisher_ID = db.Column(db.Integer, db.ForeignKey(Publishers.id))
+    publisher_ID = db.Column(db.Integer, db.ForeignKey(Publishers.id), nullable = False)

@@ -8,5 +8,9 @@
 <form action="{{ url_for('updatepublisher', id=publisher.id) }}">
     <button type="Submit">Update Publisher</button>
 </form>
+<form action="{{ url_for('publishergames', id = publisher.id) }}">
+    <button type="View"> {{ publisher.publisher_name }}</button> 
+</form>
+
 {% endfor %}
 {% endblock body %}
