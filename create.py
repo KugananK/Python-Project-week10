@@ -9,3 +9,13 @@ sample_publisher = Publishers(
 )
 db.session.add(sample_publisher)
 db.session.commit()
+
+sample_game = Games(
+        game_name = "SampleTestGame2",
+        genre = "RPG",
+        release_date = 2017,
+        price = 9.99,
+        publisher_ID = 1
+        )
+db.session.add(sample_game)
+db.session.commit()

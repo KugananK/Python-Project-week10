@@ -11,4 +11,4 @@ class Games(db.Model):
     genre = db.Column(db.String(30))
     release_date = db.Column(db.Integer)
     price = db.Column(db.Float)
-    publisher_ID = db.Column(db.Integer, db.ForeignKey(Publishers.id), nullable = False)
+    publisher_ID = db.Column(db.Integer, db.ForeignKey(Publishers.id))#, nullable = False)
