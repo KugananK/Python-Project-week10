@@ -78,3 +78,13 @@ class TestCreatePublisher(TestBase):
         response = self.client.get(url_for('addpublisher'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Publisher Name', response.data)
+
+class TestDeleteGame(TestBase):
+    def test_delete_game(self):
+        response = self.client.get(url_for('deletegame', id = 1))
+        assert len(Games.query.all()) == 0
+
+class TestDeletePublisher(TestBase):
+    def test_delete_publisher(self):
+        response = self.client.get(url_for('deletepublisher', id = 1))
+        assert len(Publishers.query.all()) == 0
