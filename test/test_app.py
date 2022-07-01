@@ -117,3 +117,9 @@ class TestUpdatePublisher(TestBase):
             )
         )
         assert Publishers.query.filter_by(publisher_name="SampleTestPublisher2")
+
+    def test_updatepublisher_get(self):
+        response = self.client.get(url_for('updatepublisher', id=1))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Update Publisher', response.data) 
+    
