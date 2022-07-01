@@ -89,8 +89,8 @@ def updatepublisher(id):
             publisher.publisher_name = form.publisher_name.data
             db.session.commit()
             return redirect(url_for('indexpublishers'))
-        elif request.method == 'GET':
-            form.publisher_name.data = publisher.publisher_name
+        # elif request.method == 'GET':
+        #     form.publisher_name.data = publisher.publisher_name
     return render_template('updatepublisher.html', form=form)
 
 @app.route('/publishergames/<id>')
