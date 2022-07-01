@@ -107,3 +107,13 @@ class TestUpdateGame(TestBase):
         response = self.client.get(url_for('updategame', id=1))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Update Game', response.data)
+
+class TestUpdatePublisher(TestBase):
+    def test_updatepublisher_post(self):
+        response = self.client.post(
+            url_for('updatepublisher', id=1),
+            data = dict(
+            publisher_name="SampleTestPublisher2"
+            )
+        )
+        assert Publisher.query.filter_by(publisher_name="SampleTestPublisher2")
