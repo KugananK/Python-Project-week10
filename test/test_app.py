@@ -116,4 +116,4 @@ class TestUpdatePublisher(TestBase):
             publisher_name="SampleTestPublisher2"
             )
         )
-        assert Publisher.query.filter_by(publisher_name="SampleTestPublisher2")
+        assert Publishers.query.filter_by(publisher_name="SampleTestPublisher2")
