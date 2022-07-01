@@ -88,3 +88,22 @@ class TestDeletePublisher(TestBase):
     def test_delete_publisher(self):
         response = self.client.get(url_for('deletepublisher', id = 1))
         assert len(Publishers.query.all()) == 0
+
+class TestUpdateGame(TestBase):
+    def test_updategame_post(self):
+        response = self.client.post(
+            url_for('updategame', id = 1),
+            data = dict(
+            game_name = "SampleTestGame2",
+            genre = "RPG",
+            release_date = 2017,
+            price = 9.99,
+            publisher_ID = 1
+            )
+        )
+    assert Games.query.filter_by(game_name="SampleTestGame2")
+
+    def test_updategame_get(self):
+        response = self.client.get(url_for('updategame', id=1))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Update Game', response.data)
