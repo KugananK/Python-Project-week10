@@ -47,7 +47,7 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'SampleTestPublisher', response.data)
 
-class TestCreate(TestBase):
+class TestCreateGame(TestBase):
     def test_create_game(self):
         response = self.client.post(
             url_for('addgame'),
@@ -63,4 +63,18 @@ class TestCreate(TestBase):
     def test_addgame_get(self):
         response = self.client.get(url_for('addgame'))
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Game Name', response.data)     
+        self.assertIn(b'Game Name', response.data)
+
+class TestCreatePublisher(TestBase):
+    def test_create_publisher(self):
+        response = self.client.post(
+            url_for('addpublisher'),
+            data = dict(publisher_name="SampleTestPublisher2"
+            )
+        )
+        assert Publishers.query.filter_by(publisher_name="SampleTestPublisher2").first().id == 2
+
+    def test_addpublisher_get(self):
+        response = self.client.get(url_for('addpublisher'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Publisher Name', response.data)
