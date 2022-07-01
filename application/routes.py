@@ -89,8 +89,6 @@ def updatepublisher(id):
             publisher.publisher_name = form.publisher_name.data
             db.session.commit()
             return redirect(url_for('indexpublishers'))
-        # elif request.method == 'GET':
-        #     form.publisher_name.data = publisher.publisher_name
     return render_template('updatepublisher.html', form=form)
 
 @app.route('/publishergames/<id>')
@@ -101,9 +99,5 @@ def publishergames(id):
     for games in game:
         if games.publisher_ID == publishers.id:
             gameList.append(games.game_name)
-            # return render_template('publishergames.html', Games=a, Publishers=publishers)
-        # elif not gameList: 
-        #     return render_template('nogames.html')
-            # needs to have a html
     gameList = ", ".join(gameList)
     return render_template('publishergames.html', Publishers=publishers, Games=gameList)
