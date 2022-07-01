@@ -123,3 +123,8 @@ class TestUpdatePublisher(TestBase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Update Publisher', response.data) 
     
+class TestPublisherGames(TestBase):
+    def publishergames(self):
+        response = self.client.get(url_for('publishergames'))
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'Publisher: ', response.data)
