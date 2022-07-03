@@ -3,7 +3,7 @@ Description=Flask app service
 [Service]
 User=jenkins
 WorkingDirectory=/home/jenkins/.jenkins/workspace/Python-Project-week10
-Environment=DATABASE_URI=sqlite:///data.db
+Environment=DATABASE_URI="DATABASE_URI"
 ExecStart=/bin/sh  \
     -c 'python3 -m venv venv &&\
     . ./venv/bin/activate &&\
