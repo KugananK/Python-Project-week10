@@ -6,7 +6,7 @@ from flask import redirect, url_for, render_template, request
 
 class TestBase(TestCase):
     def create_app(self):
-        app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///testdata.db",
+        app.config.update(SQLALCHEMY_DATABASE_URI="sqlite:///data.db",
                 SECRET_KEY='TEST_SECRET_KEY',
                 DEBUG=True,
                 WTF_CSRF_ENABLED=False
@@ -17,8 +17,7 @@ class TestBase(TestCase):
         db.create_all()
 
         testPublisher = Publishers(
-            publisher_name = "SampleTestPublisher"
-        )
+            publisher_name = "SampleTestPublisher")
         db.session.add(testPublisher)
         db.session.commit()
 
