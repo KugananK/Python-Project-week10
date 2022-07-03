@@ -1,7 +1,7 @@
 #!/bin/bash
 if type apt > /dev/null; then
     pkg_mgr=apt
-    java="openjdk-8-jre"
+    java="openjdk-11-jre"
 elif type yum /dev/null; then
     pkg_mgr=yum
     java="java"
