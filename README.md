@@ -48,13 +48,13 @@ To run the testing use the command ‘python3 -m pytest --cov-report term-missin
 
 This will also run automatically upon creating a Jenkins build, this command will show you which lines of code have not been tested and it will also show you what tests are erroring
 
-"""
+```
 class TestViews(TestBase):
     def test_game_get(self):
         response = self.client.get(url_for('indexgames'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'SampleTestGame', response.data)
-"""
+```
 
 This test above extends the TestBase class which before every test will create a test publisher and assign it a test game. This specific test will then test the get method for the indexgames. This will check whether the output is SampleTestGame. This will pass as the TestBase class creates a game called SampleTestGame.
 
