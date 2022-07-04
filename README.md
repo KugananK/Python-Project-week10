@@ -59,10 +59,12 @@ This test above extends the TestBase class which before every test will create a
 # Built With
 
 •	Flask
+
 •	Jenkins
 # Coded With
 
 •	Python
+
 •	HTML
 # Authors
 
@@ -74,5 +76,7 @@ This project is licensed under the MIT license
 # Acknowledgments
 
 •	Hat tip to bros Afzal and Zake
+
 •	Qa-community
+
 •	W3schools
