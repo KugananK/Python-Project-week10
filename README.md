@@ -7,11 +7,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 # Prerequisites
 ## Software needed
-``` Visual Studio Code - I use VSC for my code and terminal, to install it,  https://code.virtualstudio.com/download follow the instruction here to download your own
+Visual Studio Code - I use VSC for my code and terminal, to install it,  https://code.virtualstudio.com/download follow the instruction here to download your own
 
 Google Cloud Platform account – I use GCP for running my VMs and to host my Database, create an account here, https://cloud.google.com
 
-Github – I use github as my online repository, create an account here, https://github.com/ ```
+Github – I use github as my online repository, create an account here, https://github.com/
 
 
 # Installing
