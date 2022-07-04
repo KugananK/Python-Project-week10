@@ -25,26 +25,26 @@ Open VSC, download the SSH extension. Using this extension in the click the gree
 
 Create a new user profile with the hostname set as the VM external IP address and the user as the name of your local user.
 
-Delete the file .ssh/known_hosts with the command ```rm known_hosts``` in terminal.
+Delete the file .ssh/known_hosts with the command ``` rm known_hosts ``` in terminal.
 
-Run the command ```ssh-keygen``` and press enter until it displays your key as art.
+Run the command ``` ssh-keygen ``` and press enter until it displays your key as art.
 
-Then run the command ```cat .ssh/id_rsa.pub``` to display the public ssh key, copy this and edit VM instance on GCP to include this ssh key.
+Then run the command ``` cat .ssh/id_rsa.pub ``` to display the public ssh key, copy this and edit VM instance on GCP to include this ssh key.
 
 Click the green button in the bottom left of VSC then click connect to host, select the new host user profile and click yes to continue.
 
-Once you have connected to the vm, ```run ssh-keygen``` and ```cat .ssh/id_rsa.pub``` and copy the public ssh key from the vm.
+Once you have connected to the vm, ``` run ssh-keygen ``` and ``` cat .ssh/id_rsa.pub ``` and copy the public ssh key from the vm.
 
 Paste this key into your github ssh keys, this will allow you to use ssh keys to clone repositories and such which decreases vulnerabilities and thus will make your database more secure.
 
-Then clone the repository using ```git clone git@github.com:KugananK/Python-Project-week10.git```
+Then clone the repository using ``` git clone git@github.com:KugananK/Python-Project-week10.git ```
 
-Run the command ```bash startup.sh```
+Run the command ``` bash startup.sh ```
 
 Open the app on port 5000, this will be your VM’s external IP with ‘:5000’ at the end of it in your browser.
 
 # Testing
-To run the testing use the command ```python3 -m pytest --cov-report term-missing --cov application/ test/```
+To run the testing use the command ``` python3 -m pytest --cov-report term-missing --cov application/ test/ ```
 
 This will also run automatically upon creating a Jenkins build, this command will show you which lines of code have not been tested and it will also show you what tests are erroring
 
