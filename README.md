@@ -1,12 +1,12 @@
 Coverage: 100%
-Python-Project-week10
+# Python-Project-week10
 The project is games management system, it is built to allow you to check information on games and which publishers published what games. The application has full CRUD functionality. 
 
-Getting Started
+# Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
-Prerequisites
-Software needed
+# Prerequisites
+## Software needed
 Visual Studio Code - I use VSC for my code and terminal, to install it,  https://code.virtualstudio.com/download follow the instruction here to download your own
 
 Google Cloud Platform account – I use GCP for running my VMs and to host my Database, create an account here, https://cloud.google.com
@@ -14,7 +14,7 @@ Google Cloud Platform account – I use GCP for running my VMs and to host my Da
 Github – I use github as my online repository, create an account here, https://github.com/
 
 
-Installing
+# Installing
 Create a GCP account to receive, this gives you $300 of free credit for 90 days, after which you will need to pay.
 
 Create firewall rules for port 5000 and port  8080, you will use port 5000 to run the app and port 8080 is to use for Jenkins(touched on later).
@@ -43,7 +43,7 @@ Run the command ‘bash startup.sh’
 
 Open the app on port 5000, this will be your VM’s external IP with ‘:5000’ at the end of it in your browser.
 
-Testing
+# Testing
 To run the testing use the command ‘python3 -m pytest --cov-report term-missing --cov application/ test/’
 
 This will also run automatically upon creating a Jenkins build, this command will show you which lines of code have not been tested and it will also show you what tests are erroring
@@ -56,22 +56,22 @@ class TestViews(TestBase):
 
 This test above extends the TestBase class which before every test will create a test publisher and assign it a test game. This specific test will then test the get method for the indexgames. This will check whether the output is SampleTestGame. This will pass as the TestBase class creates a game called SampleTestGame.
 
-Built With
+# Built With
 
 •	Flask
 •	Jenkins
-Coded With
+# Coded With
 
 •	Python
 •	HTML
-Authors
+# Authors
 
 •	Kajan Kugananthajothy - Author - kuganank
-License
+# License
 
 This project is licensed under the MIT license
  
-Acknowledgments
+# Acknowledgments
 
 •	Hat tip to bros Afzal and Zake
 •	Qa-community
